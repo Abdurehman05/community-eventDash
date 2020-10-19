@@ -1,6 +1,6 @@
 ![ERD](./ERD.jpeg)
 
-![Wireframe](./wire1.jpeg)
+![Wireframe](./wire01.jpeg)
 ![Wireframe](./wire2.jpeg)
 ![Wireframe](./wire3.jpeg)
 ![Wireframe](./wire4.jpeg)
