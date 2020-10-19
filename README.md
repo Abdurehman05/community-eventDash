@@ -1,5 +1,6 @@
 ![ERD](./ERD.jpeg)
-![Wireframe](./wireframe/wire1.jpeg)
+
+![Wireframe](./wire1.jpeg)(./wire2.jpeg)(./wire3.jpeg)(./wire4.jpeg)(./wire5.jpeg)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
