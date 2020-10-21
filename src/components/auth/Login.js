@@ -5,7 +5,7 @@ import "./Login.css";
 
 export const Login = props => {
   const email = useRef();
-  //   const password = useRef();
+  const password = useRef();
   const existDialog = useRef();
   const history = useHistory();
 
@@ -41,8 +41,8 @@ export const Login = props => {
       </dialog>
 
       <section>
-        <form inverted className="form--login" onSubmit={handleLogin}>
-          <h1>Hello!! Welcome</h1>
+        <form className="form--login" onSubmit={handleLogin}>
+          <h1>Welcome</h1>
           <h2>Please sign in</h2>
 
           <label htmlFor="inputEmail"> Email address </label>
