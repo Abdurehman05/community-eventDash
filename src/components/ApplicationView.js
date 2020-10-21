@@ -12,7 +12,7 @@ export const ApplicationViews = props => {
       </Route>
 
       <EventProvider>
-        <Route exact path="/events">
+        <Route path="/events">
           <EventList />
         </Route>
       </EventProvider>
