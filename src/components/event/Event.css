@@ -1,0 +1,8 @@
+.events {
+    padding: 2em;
+}
+
+.event {
+    padding: 1em;
+    border: 2px solid rgb(0, 140, 255);
+}
