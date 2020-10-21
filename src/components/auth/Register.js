@@ -104,7 +104,7 @@ export const Register = props => {
             type="zip"
             name="zip"
             className="form-control"
-            placeholder="00000"
+            placeholder="Zip Code"
             required
           />
         </div>
