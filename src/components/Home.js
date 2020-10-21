@@ -5,7 +5,7 @@ import "./App.css";
 export const Home = () => (
   <>
     <div className="homeHeader">
-      <h1>Welcome ETHIO-Nash Events</h1>
+      <h1>Welcome ETHIO-Nash Community Events</h1>
     </div>
   </>
 );

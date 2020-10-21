@@ -21,12 +21,35 @@ export const EventProvider = props => {
     }).then(getEvents);
   };
 
+  const getEventById = id => {
+    return fetch(`http://localhost:8080/events/${id}`).then(res => res.json());
+  };
+
+  const deleteEvent = eventId => {
+    return fetch(`http://localhost:8080/events/${eventId}`, {
+      method: "DELETE"
+    }).then(getEvents);
+  };
+
+  const editEvent = event => {
+    return fetch(`http://localhost:8080/events/${event.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(event)
+    }).then(getEvents);
+  };
+
   return (
     <EventContext.Provider
       value={{
         events,
         getEvents,
-        addEvent
+        addEvent,
+        getEventById,
+        deleteEvent,
+        editEvent
       }}
     >
       {props.children}
