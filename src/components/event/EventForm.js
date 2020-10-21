@@ -84,7 +84,7 @@ export const EventForm = () => {
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="eventLocation">Time:</label>
+          <label htmlFor="eventTime">Time:</label>
           <input
             type="time"
             id="eventTime"
