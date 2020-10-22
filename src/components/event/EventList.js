@@ -14,20 +14,22 @@ export const EventList = () => {
   const history = useHistory();
   return (
     <>
-      <div className="eventTitleButton">
-        <h2>Events</h2>
-        <button
-          onClick={() => {
-            history.push("/events/create");
-          }}
-        >
-          Add New Event
-        </button>
-      </div>
+      <div className="events">
+        <div className="eventTitleButton">
+          <h2>Events</h2>
+          <button
+            onClick={() => {
+              history.push("/events/create");
+            }}
+          >
+            Add New Event
+          </button>
+        </div>
 
-      {events.map(event => {
-        return <EventCard key={event.id} event={event} />;
-      })}
+        {events.map(event => {
+          return <EventCard key={event.id} event={event} />;
+        })}
+      </div>
     </>
   );
 };
