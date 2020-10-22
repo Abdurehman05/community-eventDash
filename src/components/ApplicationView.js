@@ -7,6 +7,8 @@ import { EventForm } from "./event/EventForm";
 import { EventDetail } from "./event/EventDetail";
 import { LocationProvider } from "./location/LocationProvider";
 import { LocationList } from "./location/LocationList";
+import { LocationDetail } from "./location/LocationDetail";
+import { LocationForm } from "./location/LocationForm";
 
 export const ApplicationViews = props => {
   return (
@@ -15,6 +17,7 @@ export const ApplicationViews = props => {
       <Route exact path="/">
         <Home />
       </Route>
+
       {/* Events */}
       <EventProvider>
         <Route exact path="/events">
@@ -45,6 +48,24 @@ export const ApplicationViews = props => {
       <LocationProvider>
         <Route exact path="/locations">
           <LocationList />
+        </Route>
+      </LocationProvider>
+
+      <LocationProvider>
+        <Route exact path="/locations/create">
+          <LocationForm />
+        </Route>
+      </LocationProvider>
+
+      <LocationProvider>
+        <Route exact path="/locations/detail/:locationId(\d+)">
+          <LocationDetail />
+        </Route>
+      </LocationProvider>
+
+      <LocationProvider>
+        <Route exact path="/locations/edit/:locationId(\d+)">
+          <LocationForm />
         </Route>
       </LocationProvider>
     </>
