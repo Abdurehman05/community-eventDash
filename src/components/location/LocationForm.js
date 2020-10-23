@@ -11,6 +11,7 @@ export const LocationForm = () => {
     name: "",
     street: "",
     city: "",
+    state: "",
     zip: "",
     country: ""
   });
@@ -43,6 +44,7 @@ export const LocationForm = () => {
         name: location.name,
         street: location.street,
         city: location.city,
+        state: location.state,
         zip: location.zip,
         country: location.country,
         userId: parseInt(localStorage.getItem("active_user"))
@@ -52,6 +54,7 @@ export const LocationForm = () => {
         name: location.name,
         street: location.street,
         city: location.city,
+        state: location.state,
         zip: location.zip,
         country: location.country,
         userId: parseInt(localStorage.getItem("active_user"))
@@ -106,6 +109,22 @@ export const LocationForm = () => {
             autoFocus
             className="form-control"
             placeholder="City"
+            onChange={handleControlledInputChange}
+          />
+        </div>
+      </fieldset>
+      <fieldset>
+        <div className="form-group">
+          <label htmlFor="locationState">State:</label>
+          <input
+            type="text"
+            id="locationState"
+            name="state"
+            value={location.state}
+            required
+            autoFocus
+            className="form-control"
+            placeholder="State"
             onChange={handleControlledInputChange}
           />
         </div>
