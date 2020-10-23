@@ -22,7 +22,9 @@ export const EventProvider = props => {
   };
 
   const getEventById = id => {
-    return fetch(`http://localhost:8080/events/${id}`).then(res => res.json());
+    return fetch(
+      `http://localhost:8080/events/${id}?_expand=location`
+    ).then(res => res.json());
   };
 
   const deleteEvent = eventId => {

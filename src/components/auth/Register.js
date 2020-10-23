@@ -5,7 +5,6 @@ import "./Login.css";
 export const Register = props => {
   const username = useRef();
   const email = useRef();
-  const password = useRef();
   const zip = useRef();
   const admin = useRef();
   const conflictDialog = useRef();
@@ -30,7 +29,6 @@ export const Register = props => {
           body: JSON.stringify({
             email: email.current.value,
             username: `${username.current.value}`,
-            password: `${password.current.value}`,
             zip: `${zip.current.value}`,
             admin: `${admin.current.value}`
           })
@@ -83,17 +81,6 @@ export const Register = props => {
             name="email"
             className="form-control"
             placeholder="Email address"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="inputEmail">Password </label>
-          <input
-            ref={password}
-            type="password"
-            name="password"
-            className="form-control"
-            placeholder="Enter your password"
             required
           />
         </div>

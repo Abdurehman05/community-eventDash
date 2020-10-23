@@ -7,13 +7,14 @@ export const EventDetail = () => {
   const { getEventById, deleteEvent } = useContext(EventContext);
 
   const [event, setEvent] = useState({});
-  const [locations, setLocation] = useState({});
+  const [location, setLocation] = useState({});
 
   const { eventId } = useParams();
   const history = useHistory();
   const activeUser = sessionStorage.getItem("activeUser");
 
   useEffect(() => {
+    console.log("useEffect", eventId);
     getEventById(eventId).then(response => {
       setEvent(response);
       setLocation(response.location);
@@ -25,8 +26,8 @@ export const EventDetail = () => {
       <div className="event-userId">{activeUser}</div>
       <div className="event-date">{event.date}</div>
       <div className="event-time">{event.time}</div>
-      {/* <div className="event-location">Location: {location.name}</div>
-      <br></br> */}
+      <div className="event-location">Location: {location.name}</div>
+      <br></br>
       <button
         onClick={() => {
           deleteEvent(event.id).then(() => {
