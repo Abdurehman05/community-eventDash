@@ -6,7 +6,7 @@ export const EventProvider = props => {
   const [events, setEvents] = useState([]);
 
   const getEvents = () => {
-    return fetch("http://localhost:8080/events?_expand=user")
+    return fetch("http://localhost:8080/events?_expand=location")
       .then(res => res.json())
       .then(setEvents);
   };
