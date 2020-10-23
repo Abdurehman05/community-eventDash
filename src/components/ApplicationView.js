@@ -9,6 +9,9 @@ import { LocationProvider } from "./location/LocationProvider";
 import { LocationList } from "./location/LocationList";
 import { LocationDetail } from "./location/LocationDetail";
 import { LocationForm } from "./location/LocationForm";
+import { MemberProvider } from "./member/MemberProvider";
+import { MemberList } from "./member/MemberList";
+// import { MemberForm } from "./member/MemberForm";
 
 export const ApplicationViews = props => {
   return (
@@ -74,6 +77,19 @@ export const ApplicationViews = props => {
           <LocationForm />
         </Route>
       </LocationProvider>
+
+      {/* Members */}
+      <MemberProvider>
+        <Route exact path="/members">
+          <MemberList />
+        </Route>
+      </MemberProvider>
+
+      {/* <MemberProvider>
+        <Route exact path="/members/create">
+          <MemberForm />
+        </Route>
+      </MemberProvider> */}
     </>
   );
 };
