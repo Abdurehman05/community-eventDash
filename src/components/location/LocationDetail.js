@@ -20,7 +20,9 @@ export const LocationDetail = () => {
       <h3 className="location-name">{location.name}</h3>
       <div className="location-userId">{activeUser}</div>
       <div className="location-street">{location.street}</div>
-      <div className="location-city">{location.city}</div>
+      <div className="location-city-state">
+        {location.city},{location.state}
+      </div>
       <div className="location-zip">{location.zip}</div>
       <div className="location-country">{location.country}</div>
       <br></br>
