@@ -42,9 +42,11 @@ export const ApplicationViews = props => {
       </EventProvider>
 
       <EventProvider>
-        <Route exact path="/events/edit/:eventId(\d+)">
-          <EventForm />
-        </Route>
+        <LocationProvider>
+          <Route exact path="/events/edit/:eventId(\d+)">
+            <EventForm />
+          </Route>
+        </LocationProvider>
       </EventProvider>
 
       {/* Locations */}

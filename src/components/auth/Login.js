@@ -5,7 +5,7 @@ import "./Login.css";
 
 export const Login = props => {
   const email = useRef();
-  const password = useRef();
+  const username = useRef();
   const existDialog = useRef();
   const history = useHistory();
 
@@ -45,16 +45,6 @@ export const Login = props => {
           <h1>Welcome</h1>
           <h2>Please sign in</h2>
 
-          <label htmlFor="inputEmail"> Email address </label>
-          <input
-            ref={email}
-            type="email"
-            id="email"
-            className="form-control"
-            placeholder="Email address"
-            required
-            autoFocus
-          />
           {/* <label htmlFor="inputPassword"> Password </label>
           <input
             ref={password}
@@ -65,12 +55,23 @@ export const Login = props => {
             required
             autoFocus
           /> */}
+
+          <label htmlFor="inputEmail"> Email address </label>
+          <input
+            ref={email}
+            type="email"
+            id="email"
+            className="form-control"
+            placeholder="Email address"
+            required
+            autoFocus
+          />
         </form>
 
         <button type="submit">Sign in</button>
       </section>
       <section className="link--register">
-        <Link to="/register">Register</Link>
+        <Link to="/register">Be a member</Link>
       </section>
     </main>
   );
