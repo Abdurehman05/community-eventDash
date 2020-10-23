@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { EventContext } from "./EventProvider";
+import { LocationContext } from "../location/LocationProvider";
 import "./Event.css";
 import { useHistory, useParams } from "react-router-dom";
 
 export const EventForm = () => {
   const { addEvent, getEventById, editEvent } = useContext(EventContext);
+  const { locations, getLocations } = useContext(LocationContext);
+
   const [event, setEvent] = useState({ name: "", date: "", time: "" });
   const [isLoading, setIsLoading] = useState(true);
   const { eventId } = useParams();
@@ -17,33 +20,41 @@ export const EventForm = () => {
   };
 
   useEffect(() => {
-    if (eventId) {
-      getEventById(eventId).then(event => {
-        setEvent(event);
+    getLocations().then(() => {
+      if (eventId) {
+        getEventById(eventId).then(event => {
+          setEvent(event);
+          setIsLoading(false);
+        });
+      } else {
         setIsLoading(false);
-      });
-    } else {
-      setIsLoading(false);
-    }
+      }
+    });
   }, []);
 
   const constructEventObj = () => {
-    setIsLoading(true);
-    if (eventId) {
-      editEvent({
-        id: event.id,
-        name: event.name,
-        date: event.date,
-        time: event.time,
-        userId: parseInt(localStorage.getItem("active_user"))
-      }).then(() => history.push(`/events/detail/${event.id}`));
+    if (parseInt(event.locationId) === 0) {
+      window.alert("Please select a location for your event");
     } else {
-      addEvent({
-        name: event.name,
-        date: event.date,
-        time: event.time,
-        userId: parseInt(localStorage.getItem("active_user"))
-      }).then(() => history.push("/events"));
+      setIsLoading(true);
+      if (eventId) {
+        editEvent({
+          id: event.id,
+          name: event.name,
+          date: event.date,
+          time: event.time,
+          locationId: parseInt(event.locationId),
+          userId: parseInt(localStorage.getItem("active_user"))
+        }).then(() => history.push(`/events/detail/${event.id}`));
+      } else {
+        addEvent({
+          name: event.name,
+          date: event.date,
+          time: event.time,
+          locationId: parseInt(event.locationId),
+          userId: parseInt(localStorage.getItem("active_user"))
+        }).then(() => history.push("/events"));
+      }
     }
   };
 
@@ -96,6 +107,26 @@ export const EventForm = () => {
             placeholder="Time"
             onChange={handleControlledInputChange}
           />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <div className="form-group">
+          <label htmlFor="location">Choose event location: </label>
+          <select
+            value={event.locationId}
+            name="locationId"
+            id="eventLocation"
+            className="form-control"
+            onChange={handleControlledInputChange}
+          >
+            <option value="0">Select a location</option>
+            {locations.map(l => (
+              <option key={l.id} value={l.id}>
+                {l.name}
+              </option>
+            ))}
+          </select>
         </div>
       </fieldset>
 

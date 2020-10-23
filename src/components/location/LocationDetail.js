@@ -5,7 +5,7 @@ import "./Location.css";
 
 export const LocationDetail = () => {
   const { getLocationById, deleteLocation } = useContext(LocationContext);
-  const [location, setLocation] = useState({});
+  const [locations, setLocation] = useState({});
   const { locationId } = useParams();
   const history = useHistory();
   const activeUser = sessionStorage.getItem("activeUser");
@@ -17,17 +17,16 @@ export const LocationDetail = () => {
   }, []);
   return (
     <section className="location">
-      <h3 className="location-name">{location.name}</h3>
+      <h3 className="location-name">{locations.name}</h3>
       <div className="location-userId">{activeUser}</div>
-      <div className="location-street">{location.street}</div>
-      <div className="location-city">{location.city}</div>
-      <div className="location-state">{location.state}</div>
-      <div className="location-zip">{location.zip}</div>
-      <div className="location-country">{location.country}</div>
+      <div className="location-street">{locations.street}</div>
+      <div className="location-city">{locations.city}</div>
+      <div className="location-zip">{locations.zip}</div>
+      <div className="location-country">{locations.country}</div>
       <br></br>
       <button
         onClick={() => {
-          deleteLocation(location.id).then(() => {
+          deleteLocation(locations.id).then(() => {
             history.push("/locations");
           });
         }}
@@ -36,7 +35,7 @@ export const LocationDetail = () => {
       </button>
       <button
         onClick={() => {
-          history.push(`/locations/edit/${location.id}`);
+          history.push(`/locations/edit/${locations.id}`);
         }}
       >
         Edit

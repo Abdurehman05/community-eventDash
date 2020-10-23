@@ -26,15 +26,19 @@ export const ApplicationViews = props => {
       </EventProvider>
 
       <EventProvider>
-        <Route exact path="/events/create">
-          <EventForm />
-        </Route>
+        <LocationProvider>
+          <Route exact path="/events/create">
+            <EventForm />
+          </Route>
+        </LocationProvider>
       </EventProvider>
 
       <EventProvider>
-        <Route exact path="/events/detail/:eventId(\d+)">
-          <EventDetail />
-        </Route>
+        <LocationProvider>
+          <Route exact path="/events/detail/:eventId(\d+)">
+            <EventDetail />
+          </Route>
+        </LocationProvider>
       </EventProvider>
 
       <EventProvider>
