@@ -112,7 +112,7 @@ export const MemberForm = () => {
         <div className="form-group">
           <label htmlFor="memberType">Is Admin:</label>
           <input
-            type="boolean"
+            type="text"
             id="memberType"
             name="usertype"
             value={member.usertype}
