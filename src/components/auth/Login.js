@@ -5,8 +5,9 @@ import "./Login.css";
 
 export const Login = props => {
   const email = useRef();
-  const username = useRef();
+  const password = useRef();
   const existDialog = useRef();
+  const passwordDialog = useRef();
   const history = useHistory();
 
   const existingUserCheck = () => {
@@ -19,10 +20,12 @@ export const Login = props => {
     e.preventDefault();
 
     existingUserCheck().then(exists => {
-      if (exists) {
+      if (exists && exists.password === password.current.value) {
         localStorage.setItem("active_user", exists.id);
         history.push("/");
-      } else {
+      } else if (exists && exists.password !== password.current.value) {
+        passwordDialog.current.showModal();
+      } else if (!exists) {
         existDialog.current.showModal();
       }
     });
@@ -31,7 +34,7 @@ export const Login = props => {
   return (
     <main className="container--login">
       <dialog className="dialog dialog--auth" ref={existDialog}>
-        <div>User does not exist</div>
+        <div>Member does not exist</div>
         <button
           className="button--close"
           onClick={e => existDialog.current.close()}
@@ -40,35 +43,51 @@ export const Login = props => {
         </button>
       </dialog>
 
-      <section>
+      <dialog className="dialog dialog--password" ref={passwordDialog}>
+        <div>Password does not match</div>
+        <button
+          className="button--close"
+          onClick={e => passwordDialog.current.close()}
+        >
+          Close
+        </button>
+      </dialog>
+
+      <section className="login">
         <form className="form--login" onSubmit={handleLogin}>
           <h1>Welcome</h1>
           <h2>Please sign in</h2>
 
-          {/* <label htmlFor="inputPassword"> Password </label>
-          <input
-            ref={password}
-            type="password"
-            id="password"
-            className="form-control"
-            placeholder="Enter your password"
-            required
-            autoFocus
-          /> */}
+          <fieldset>
+            <label htmlFor="inputEmail"> Email address </label>
+            <input
+              ref={email}
+              type="email"
+              id="email"
+              className="form-control"
+              placeholder="Email address"
+              required
+              autoFocus
+            />
+          </fieldset>
 
-          <label htmlFor="inputEmail"> Email address </label>
-          <input
-            ref={email}
-            type="email"
-            id="email"
-            className="form-control"
-            placeholder="Email address"
-            required
-            autoFocus
-          />
+          <fieldset>
+            <label htmlFor="inputPassword"> Password </label>
+            <input
+              ref={password}
+              type="text"
+              id="password"
+              className="form-control"
+              placeholder="Password"
+              required
+              autoFocus
+            />
+          </fieldset>
+
+          <fieldset>
+            <button type="submit">Sign in</button>
+          </fieldset>
         </form>
-
-        <button type="submit">Sign in</button>
       </section>
       <section className="link--register">
         <Link to="/register">Be a member</Link>

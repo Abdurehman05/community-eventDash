@@ -18,6 +18,7 @@ export const MemberDetail = () => {
     <section className="member">
       <h3 className="member-name">Name: {member.username}</h3>
       <div className="member-email">Email: {member.email}</div>
+      <div className="member-password">Password: {member.password}</div>
       <div className="member-gender">Gender: {member.gender}</div>
       <div className="member-type">Admin?:{member.usertype}</div>
       <div className="member-zip">Zip-Code:{member.zipcode}</div>
