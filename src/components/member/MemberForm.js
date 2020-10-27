@@ -7,6 +7,7 @@ export const MemberForm = () => {
   const [member, setMember] = useState({
     username: "",
     email: "",
+    password: "",
     gender: "",
     usertype: "",
     zipcode: ""
@@ -40,19 +41,21 @@ export const MemberForm = () => {
         id: member.id,
         username: member.username,
         email: member.email,
+        password: member.password,
         gender: member.gender,
         usertype: member.usertype,
-        zipcode: member.zipcode
-        // userId: parseInt(localStorage.getItem("active_user"))
+        zipcode: member.zipcode,
+        userId: parseInt(localStorage.getItem("active_user"))
       }).then(() => history.push(`/members/detail/${member.id}`));
     } else {
       addMember({
         username: member.username,
         email: member.email,
+        password: member.password,
         gender: member.gender,
         usertype: member.usertype,
-        zipcode: member.zipcode
-        // userId: parseInt(localStorage.getItem("active_user"))
+        zipcode: member.zipcode,
+        userId: parseInt(localStorage.getItem("active_user"))
       }).then(() => history.push("/members"));
     }
   };
@@ -93,6 +96,18 @@ export const MemberForm = () => {
         </div>
       </fieldset>
       <fieldset>
+        <label htmlFor="inputPassword">Password </label>
+        <input
+          type="text"
+          id="password"
+          name="password"
+          value={member.password}
+          className="form-control"
+          placeholder="Password"
+          onChange={handleControlledInputChange}
+        />
+      </fieldset>
+      <fieldset>
         <div className="form-group">
           <label htmlFor="MemberGender">Gender:</label>
           <input
@@ -113,13 +128,13 @@ export const MemberForm = () => {
           <label htmlFor="memberType">Is Admin:</label>
           <input
             type="text"
-            id="memberType"
+            id="usertype"
             name="usertype"
             value={member.usertype}
             required
             autoFocus
             className="form-control"
-            placeholder="False"
+            placeholder="false"
             onChange={handleControlledInputChange}
           />
         </div>

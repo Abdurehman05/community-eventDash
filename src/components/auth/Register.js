@@ -5,8 +5,10 @@ import "./Login.css";
 export const Register = props => {
   const username = useRef();
   const email = useRef();
-  const zip = useRef();
-  const admin = useRef();
+  const password = useRef();
+  const gender = useRef();
+  const zipcode = useRef();
+  const usertype = useRef();
   const conflictDialog = useRef();
   const history = useHistory();
 
@@ -29,8 +31,9 @@ export const Register = props => {
           body: JSON.stringify({
             email: email.current.value,
             username: `${username.current.value}`,
-            zip: `${zip.current.value}`,
-            admin: `${admin.current.value}`
+            gender: `${gender.current.value}`,
+            zipcode: `${zipcode.current.value}`,
+            usertype: `${usertype.current.value}`
           })
         })
           .then(_ => _.json())
@@ -60,48 +63,79 @@ export const Register = props => {
 
       <form className="form--login" onSubmit={handleRegister}>
         <h1 className="h3 mb-3 font-weight-normal">Register</h1>
-
-        <div>
-          <label htmlFor="username">Create Username </label>
+        <fieldset>
+          <div>
+            <label htmlFor="username">Create Username </label>
+            <input
+              ref={username}
+              type="text"
+              name="username"
+              className="form-control"
+              placeholder="Username"
+              required
+              autoFocus
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div>
+            <label htmlFor="inputEmail">Email Address </label>
+            <input
+              ref={email}
+              type="email"
+              name="email"
+              className="form-control"
+              placeholder="Email address"
+              required
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <label htmlFor="inputPassword"> Password </label>
           <input
-            ref={username}
+            ref={password}
             type="text"
-            name="username"
+            id="password"
             className="form-control"
-            placeholder="Username"
+            placeholder="Password"
             required
             autoFocus
           />
-        </div>
-        <div>
-          <label htmlFor="inputEmail">Email Address </label>
-          <input
-            ref={email}
-            type="email"
-            name="email"
-            className="form-control"
-            placeholder="Email address"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="inputEmail">Zip Code </label>
-          <input
-            ref={zip}
-            type="zip"
-            name="zip"
-            className="form-control"
-            placeholder="Zip Code"
-            required
-          />
-        </div>
+        </fieldset>
+        <fieldset>
+          <div>
+            <label htmlFor="userGender">Gender </label>
+            <input
+              ref={gender}
+              type="text"
+              name="gender"
+              className="form-control"
+              placeholder="Gender"
+              required
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div>
+            <label htmlFor="inputEmail">Zip Code </label>
+            <input
+              ref={zipcode}
+              type="zipcode"
+              name="zipcode"
+              className="form-control"
+              placeholder="Zip Code"
+              required
+            />
+          </div>
+        </fieldset>
+
         <div>
           <label htmlFor="inputAdmin"></label>
           <input
-            defaultValue={false}
-            ref={admin}
+            ref={usertype}
             type="hidden"
-            name="admin"
+            name="usertype"
+            defaultValue={false}
             className="form-control"
             required
           />
