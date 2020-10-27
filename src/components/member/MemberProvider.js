@@ -22,22 +22,22 @@ export const MemberProvider = props => {
   };
 
   const getMemberById = id => {
-    return fetch(`http://localhost:8080/users`).then(res => res.json());
+    return fetch(`http://localhost:8080/users/${id}`).then(res => res.json());
   };
 
-  const terminateMembership = memberId => {
+  const deleteMember = memberId => {
     return fetch(`http://localhost:8080/users/${memberId}`, {
       method: "DELETE"
     }).then(getMembers);
   };
 
-  const updateMember = member => {
-    return fetch(`http://localhost:8080/users/${member.id}`, {
+  const editMember = user => {
+    return fetch(`http://localhost:8080/users/${user.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(member)
+      body: JSON.stringify(user)
     }).then(getMembers);
   };
 
@@ -48,8 +48,8 @@ export const MemberProvider = props => {
         getMembers,
         addMember,
         getMemberById,
-        terminateMembership,
-        updateMember
+        deleteMember,
+        editMember
       }}
     >
       {props.children}

@@ -11,8 +11,8 @@ import { LocationDetail } from "./location/LocationDetail";
 import { LocationForm } from "./location/LocationForm";
 import { MemberProvider } from "./member/MemberProvider";
 import { MemberList } from "./member/MemberList";
-// import { MemberForm } from "./member/MemberForm";
-
+import { MemberForm } from "./member/MemberForm";
+import { MemberDetail } from "./member/MemberDetail";
 export const ApplicationViews = props => {
   return (
     <>
@@ -85,11 +85,23 @@ export const ApplicationViews = props => {
         </Route>
       </MemberProvider>
 
-      {/* <MemberProvider>
+      <MemberProvider>
         <Route exact path="/members/create">
           <MemberForm />
         </Route>
-      </MemberProvider> */}
+      </MemberProvider>
+
+      <MemberProvider>
+        <Route exact path="/members/detail/:memberId(\d+)">
+          <MemberDetail />
+        </Route>
+      </MemberProvider>
+
+      <MemberProvider>
+        <Route exact path="/members/edit/:memberId(\d+)">
+          <MemberForm />
+        </Route>
+      </MemberProvider>
     </>
   );
 };
