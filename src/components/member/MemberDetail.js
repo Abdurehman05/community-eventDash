@@ -16,11 +16,11 @@ export const MemberDetail = () => {
   }, []);
   return (
     <section className="member">
-      <h3 className="member-name">{member.username}</h3>
-      <div className="member-email">{member.email}</div>
-      <div className="member-gender">{member.gender}</div>
-      <div className="member-type">{member.usertype}</div>
-      <div className="member-zip">{member.zip}</div>
+      <h3 className="member-name">Name: {member.username}</h3>
+      <div className="member-email">Email: {member.email}</div>
+      <div className="member-gender">Gender: {member.gender}</div>
+      <div className="member-type">Admin?:{member.usertype}</div>
+      <div className="member-zip">Zip-Code:{member.zipcode}</div>
       <div className="memberId">{activeUser}</div>
 
       <button
