@@ -25,10 +25,27 @@ export const EventList = () => {
             Add New Event
           </button>
         </div>
-
+        <h2>All events </h2>
         {events.map(event => {
           return <EventCard key={event.id} event={event} />;
         })}
+
+        <h2>Coming events </h2>
+        <div className="future-event">
+          {events.map(event => {
+            if (event.date >= Date.now()) {
+              return <EventCard key={event.id} event={event} />;
+            }
+          })}
+        </div>
+        <h2>Past events </h2>
+        <div className="past-events">
+          {events.map(event => {
+            if (event.date < Date.now()) {
+              return <EventCard key={event.id} event={event} />;
+            }
+          })}
+        </div>
       </div>
     </>
   );

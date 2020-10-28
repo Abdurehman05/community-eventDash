@@ -1,8 +1,34 @@
 .events {
-    padding: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .event {
     padding: 1em;
     border: 2px solid rgb(0, 140, 255);
+    flex-basis: 30%;
+    margin: 1em;
+    padding: 1em;
+    max-width: 400px;
+    height: 160px;
+}
+
+.future-event {
+    padding: 1em;
+    border: 2px solid rgb(0, 140, 255);
+    flex-basis: 30%;
+    margin: 1em;
+    padding: 1em;
+    max-width: 400px;
+}
+
+.past-events {
+    padding: 1em;
+    border: 2px solid rgb(0, 140, 255);
+    flex-basis: 30%;
+    margin: 1em;
+    padding: 1em;
+    max-width: 400px;
 }

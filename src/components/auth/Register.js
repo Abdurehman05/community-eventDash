@@ -31,6 +31,7 @@ export const Register = props => {
           body: JSON.stringify({
             email: email.current.value,
             username: `${username.current.value}`,
+            password: `${password.current.value}`,
             gender: `${gender.current.value}`,
             zipcode: `${zipcode.current.value}`,
             usertype: `${usertype.current.value}`
@@ -72,6 +73,7 @@ export const Register = props => {
               name="username"
               className="form-control"
               placeholder="Username"
+              autoComplete="current-username"
               required
               autoFocus
             />
@@ -86,6 +88,7 @@ export const Register = props => {
               name="email"
               className="form-control"
               placeholder="Email address"
+              autoComplete="current-email"
               required
             />
           </div>
@@ -94,10 +97,12 @@ export const Register = props => {
           <label htmlFor="inputPassword"> Password </label>
           <input
             ref={password}
-            type="text"
+            type="password"
+            name="password"
             id="password"
             className="form-control"
             placeholder="Password"
+            autoComplete="current-password"
             required
             autoFocus
           />
