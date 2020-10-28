@@ -8,18 +8,44 @@ export const EventDetail = () => {
 
   const [event, setEvent] = useState({});
   const [location, setLocation] = useState({});
+  const [member, setMembers] = useState({});
 
   const { eventId } = useParams();
   const history = useHistory();
-  const activeUser = sessionStorage.getItem("activeUser");
+  const activeUser = sessionStorage.getItem("active_user");
 
   useEffect(() => {
-    console.log("useEffect", eventId);
     getEventById(eventId).then(response => {
       setEvent(response);
       setLocation(response.location);
+      setMembers(response.member);
     });
   }, []);
+
+  const showButton = () => {
+    if (event.userId === parseInt(localStorage.getItem("active_user")))
+      return (
+        <>
+          <button
+            onClick={() => {
+              deleteEvent(event.id).then(() => {
+                history.push("/events");
+              });
+            }}
+          >
+            Delete
+          </button>
+          <button
+            onClick={() => {
+              history.push(`/events/edit/${event.id}`);
+            }}
+          >
+            Edit
+          </button>
+        </>
+      );
+  };
+
   return (
     <section className="event">
       <h3 className="event-name">{event.name}</h3>
@@ -28,7 +54,7 @@ export const EventDetail = () => {
       <div className="event-time">{event.time}</div>
       <div className="event-location">Location: {location.name}</div>
       <br></br>
-      <button
+      {/* <button
         onClick={() => {
           deleteEvent(event.id).then(() => {
             history.push("/events");
@@ -43,7 +69,9 @@ export const EventDetail = () => {
         }}
       >
         Edit
-      </button>
+      </button> */}
+
+      <section className="buttons">{showButton()}</section>
     </section>
   );
 };
