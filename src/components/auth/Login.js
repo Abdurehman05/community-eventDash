@@ -55,8 +55,8 @@ export const Login = props => {
 
       <section className="login">
         <form className="form--login" onSubmit={handleLogin}>
-          <h1>Welcome</h1>
-          <h2>Please sign in</h2>
+          <h1>Welcome to Ethio-Nash Community Events Dash</h1>
+          <h1>Please sign in</h1>
 
           <fieldset>
             <label htmlFor="inputEmail"> Email address </label>
@@ -64,8 +64,10 @@ export const Login = props => {
               ref={email}
               type="email"
               id="email"
+              name="email"
               className="form-control"
               placeholder="Email address"
+              autoComplete="current-email"
               required
               autoFocus
             />
@@ -75,10 +77,12 @@ export const Login = props => {
             <label htmlFor="inputPassword"> Password </label>
             <input
               ref={password}
-              type="text"
+              type="password"
+              name="password"
               id="password"
               className="form-control"
               placeholder="Password"
+              autoComplete="current-password"
               required
               autoFocus
             />

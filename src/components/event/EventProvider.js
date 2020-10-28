@@ -6,7 +6,9 @@ export const EventProvider = props => {
   const [events, setEvents] = useState([]);
 
   const getEvents = () => {
-    return fetch("http://localhost:8080/events?_expand=location")
+    return fetch(
+      "http://localhost:8080/events?_expand=location&_sort=date&_order=asc"
+    )
       .then(res => res.json())
       .then(setEvents);
   };
