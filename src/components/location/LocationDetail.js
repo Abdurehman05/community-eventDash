@@ -15,6 +15,30 @@ export const LocationDetail = () => {
       setLocation(response);
     });
   }, []);
+  const showButton = () => {
+    if (location.userId === parseInt(localStorage.getItem("active_user")))
+      return (
+        <>
+          <button
+            onClick={() => {
+              deleteLocation(location.id).then(() => {
+                history.push("/locations");
+              });
+            }}
+          >
+            Delete
+          </button>
+          <button
+            onClick={() => {
+              history.push(`/locations/edit/${location.id}`);
+            }}
+          >
+            Edit
+          </button>
+        </>
+      );
+  };
+
   return (
     <section className="location">
       <h3 className="location-name">{location.name}</h3>
@@ -26,22 +50,7 @@ export const LocationDetail = () => {
       <div className="location-zip">{location.zip}</div>
       <div className="location-country">{location.country}</div>
       <br></br>
-      <button
-        onClick={() => {
-          deleteLocation(location.id).then(() => {
-            history.push("/locations");
-          });
-        }}
-      >
-        Delete
-      </button>
-      <button
-        onClick={() => {
-          history.push(`/locations/edit/${location.id}`);
-        }}
-      >
-        Edit
-      </button>
+      <section className="buttons">{showButton()}</section>
     </section>
   );
 };

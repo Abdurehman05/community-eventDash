@@ -8,3 +8,29 @@
     flex-basis: 25%;
     list-style-type: none;
 }
+
+li {
+    display: inline;
+    float: left;
+}
+
+a {
+    display: block;
+    padding: 8px;
+    background-color: #18050b;
+}
+
+li a:hover {
+    background-color: rgb(245, 241, 241);
+    color: rgb(11, 1, 1);
+}
+
+.navbar {
+    display: flex;
+    flex: 100%;
+    background-color: rgb(6, 13, 216);
+}
+
+.navbar__link {
+    color: white;
+}
