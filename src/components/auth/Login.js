@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import "./Login.css";
+import { Form, Card } from "semantic-ui-react";
 
 export const Login = props => {
   const email = useRef();
@@ -32,70 +33,75 @@ export const Login = props => {
   };
 
   return (
-    <main className="container--login">
-      <dialog className="dialog dialog--auth" ref={existDialog}>
-        <div>Member does not exist</div>
-        <button
-          className="button--close"
-          onClick={e => existDialog.current.close()}
-        >
-          Close
-        </button>
-      </dialog>
+    <Card>
+      <Card.Content>
+        <main className="container--login">
+          <dialog className="dialog dialog--auth" ref={existDialog}>
+            <div>Member does not exist</div>
+            <button
+              className="button--close"
+              onClick={e => existDialog.current.close()}
+            >
+              Close
+            </button>
+          </dialog>
 
-      <dialog className="dialog dialog--password" ref={passwordDialog}>
-        <div>Password does not match</div>
-        <button
-          className="button--close"
-          onClick={e => passwordDialog.current.close()}
-        >
-          Close
-        </button>
-      </dialog>
+          <dialog className="dialog dialog--password" ref={passwordDialog}>
+            <div>Password does not match</div>
+            <button
+              className="button--close"
+              onClick={e => passwordDialog.current.close()}
+            >
+              Close
+            </button>
+          </dialog>
 
-      <section className="login">
-        <form className="form--login" onSubmit={handleLogin}>
-          <h1>Welcome to Ethio-Nash Community Events Dash</h1>
-          <h1>Please sign in</h1>
+          <section className="login">
+            <Form className="form--login" onSubmit={handleLogin}>
+              <Card.Header>
+                <h1>Welcome to Ethio-Nash Community Events Dash</h1>
+                <h1>Please sign in</h1>
+              </Card.Header>
+              <fieldset>
+                <label htmlFor="inputEmail"> Email address </label>
+                <input
+                  ref={email}
+                  type="email"
+                  id="email"
+                  name="email"
+                  className="form-control"
+                  placeholder="Email address"
+                  autoComplete="current-email"
+                  required
+                  autoFocus
+                />
+              </fieldset>
 
-          <fieldset>
-            <label htmlFor="inputEmail"> Email address </label>
-            <input
-              ref={email}
-              type="email"
-              id="email"
-              name="email"
-              className="form-control"
-              placeholder="Email address"
-              autoComplete="current-email"
-              required
-              autoFocus
-            />
-          </fieldset>
+              <fieldset>
+                <label htmlFor="inputPassword"> Password </label>
+                <input
+                  ref={password}
+                  type="password"
+                  name="password"
+                  id="password"
+                  className="form-control"
+                  placeholder="Password"
+                  autoComplete="current-password"
+                  required
+                  autoFocus
+                />
+              </fieldset>
 
-          <fieldset>
-            <label htmlFor="inputPassword"> Password </label>
-            <input
-              ref={password}
-              type="password"
-              name="password"
-              id="password"
-              className="form-control"
-              placeholder="Password"
-              autoComplete="current-password"
-              required
-              autoFocus
-            />
-          </fieldset>
-
-          <fieldset>
-            <button type="submit">Sign in</button>
-          </fieldset>
-        </form>
-      </section>
-      <section className="link--register">
-        <Link to="/register">Be a member</Link>
-      </section>
-    </main>
+              <fieldset>
+                <button type="submit">Sign in</button>
+              </fieldset>
+            </Form>
+          </section>
+          <section className="link--register">
+            <Link to="/register">Be a member</Link>
+          </section>
+        </main>
+      </Card.Content>
+    </Card>
   );
 };

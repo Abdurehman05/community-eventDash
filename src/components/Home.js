@@ -1,11 +1,15 @@
 import React from "react";
 import "./App.js";
 import "./App.css";
+import { Flag, Segment, Header } from "semantic-ui-react";
 
 export const Home = () => (
   <>
-    <div className="homeHeader">
-      <h1>Welcome ETHIO-Nash Community Events</h1>
-    </div>
+    <Header as="h1">Welcome to ETHIO-Nash Community Events</Header>
+
+    <Segment>
+      <Flag name="us" />
+      <Flag name="et" />
+    </Segment>
   </>
 );

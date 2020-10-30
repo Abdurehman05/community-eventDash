@@ -7,7 +7,7 @@ export const EventProvider = props => {
 
   const getEvents = () => {
     return fetch(
-      "http://localhost:8080/events?_expand=location&_sort=date&_order=asc"
+      "http://localhost:8080/events?_expand=user&_expand=location&_sort=date&_order=asc"
     )
       .then(res => res.json())
       .then(setEvents);
@@ -25,7 +25,7 @@ export const EventProvider = props => {
 
   const getEventById = id => {
     return fetch(
-      `http://localhost:8080/events/${id}?_expand=location`
+      `http://localhost:8080/events/${id}?_expand=location&_expand=user`
     ).then(res => res.json());
   };
 
