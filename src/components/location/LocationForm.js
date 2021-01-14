@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { LocationContext } from "./LocationProvider";
 import "./Location.css";
 import { useHistory, useParams } from "react-router-dom";
+import { Form, Card, Button } from "semantic-ui-react";
 
 export const LocationForm = () => {
   const { addLocation, getLocationById, editLocation } = useContext(
@@ -63,115 +64,119 @@ export const LocationForm = () => {
   };
 
   return (
-    <form className="locationForm">
-      <h2 className="locationForm__title">Add New Location</h2>
-      <fieldset>
-        <div className="form-group">
-          <label htmlFor="locationName">Location name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={location.name}
-            required
-            autoFocus
-            className="form-control"
-            placeholder="Location name"
-            onChange={handleControlledInputChange}
-          />
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="form-group">
-          <label htmlFor="locationStreet">Street Address:</label>
-          <input
-            type="text"
-            id="street"
-            name="street"
-            value={location.street}
-            required
-            autoFocus
-            className="form-control"
-            placeholder="Street Address"
-            onChange={handleControlledInputChange}
-          />
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="form-group">
-          <label htmlFor="locationCity">City:</label>
-          <input
-            type="text"
-            id="locationCity"
-            name="city"
-            value={location.city}
-            required
-            autoFocus
-            className="form-control"
-            placeholder="City"
-            onChange={handleControlledInputChange}
-          />
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="form-group">
-          <label htmlFor="locationState">State:</label>
-          <input
-            type="text"
-            id="locationState"
-            name="state"
-            value={location.state}
-            required
-            autoFocus
-            className="form-control"
-            placeholder="State"
-            onChange={handleControlledInputChange}
-          />
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="form-group">
-          <label htmlFor="locationZip">Zip Code:</label>
-          <input
-            type="text"
-            id="locationZip"
-            name="zip"
-            value={location.zip}
-            required
-            autoFocus
-            className="form-control"
-            placeholder="Zip Code"
-            onChange={handleControlledInputChange}
-          />
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="form-group">
-          <label htmlFor="locationCountry">Country</label>
-          <input
-            type="text"
-            id="locationCountry"
-            name="country"
-            value={location.country}
-            required
-            autoFocus
-            className="form-control"
-            placeholder="Country"
-            onChange={handleControlledInputChange}
-          />
-        </div>
-      </fieldset>
+    <Card centered>
+      <Form className="locationForm">
+        <h2 className="locationForm__title">Add New Location</h2>
+        <fieldset>
+          <div className="form-group">
+            <label htmlFor="locationName">Location name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={location.name}
+              required
+              autoFocus
+              className="form-control"
+              placeholder="Location name"
+              onChange={handleControlledInputChange}
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <label htmlFor="locationStreet">Street Address:</label>
+            <input
+              type="text"
+              id="street"
+              name="street"
+              value={location.street}
+              required
+              autoFocus
+              className="form-control"
+              placeholder="Street Address"
+              onChange={handleControlledInputChange}
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <label htmlFor="locationCity">City:</label>
+            <input
+              type="text"
+              id="locationCity"
+              name="city"
+              value={location.city}
+              required
+              autoFocus
+              className="form-control"
+              placeholder="City"
+              onChange={handleControlledInputChange}
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <label htmlFor="locationState">State:</label>
+            <input
+              type="text"
+              id="locationState"
+              name="state"
+              value={location.state}
+              required
+              autoFocus
+              className="form-control"
+              placeholder="State"
+              onChange={handleControlledInputChange}
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <label htmlFor="locationZip">Zip Code:</label>
+            <input
+              type="text"
+              id="locationZip"
+              name="zip"
+              value={location.zip}
+              required
+              autoFocus
+              className="form-control"
+              placeholder="Zip Code"
+              onChange={handleControlledInputChange}
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <label htmlFor="locationCountry">Country</label>
+            <input
+              type="text"
+              id="locationCountry"
+              name="country"
+              value={location.country}
+              required
+              autoFocus
+              className="form-control"
+              placeholder="Country"
+              onChange={handleControlledInputChange}
+            />
+          </div>
+        </fieldset>
 
-      <button
-        className="btn btn-primary"
-        disabled={isLoading}
-        onClick={e => {
-          e.preventDefault();
-          constructLocationObj();
-        }}
-      >
-        {locationId ? <>Save Location</> : <>Add Location</>}
-      </button>
-    </form>
+        <Button
+          primary
+          circular
+          className="btn btn-primary"
+          disabled={isLoading}
+          onClick={e => {
+            e.preventDefault();
+            constructLocationObj();
+          }}
+        >
+          {locationId ? <>Save Location</> : <>Add Location</>}
+        </Button>
+      </Form>
+    </Card>
   );
 };

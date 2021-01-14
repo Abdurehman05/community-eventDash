@@ -3,7 +3,7 @@ import { EventContext } from "./EventProvider";
 import { EventCard } from "./EventCard";
 import "./Event.css";
 import { useHistory } from "react-router-dom";
-import { Grid } from "semantic-ui-react";
+import { Grid, Button, Card } from "semantic-ui-react";
 
 export const EventList = () => {
   const { events, getEvents } = useContext(EventContext);
@@ -16,50 +16,41 @@ export const EventList = () => {
   return (
     <>
       <h2>Events</h2>
-      <button
+      <Button
+        primary
         onClick={() => {
           history.push("/events/create");
         }}
       >
         Add New Event
-      </button>
+      </Button>
 
-      <h2>All events </h2>
-      <Grid container columns={3}>
-        <Grid.Row>
-          {events.map(event => {
-            return (
-              <Grid.Column>
-                <EventCard key={event.id} event={event} />
-              </Grid.Column>
-            );
-          })}
-        </Grid.Row>
-        <h2>Coming events</h2>
-        <Grid.Row>
+      <Card.Group itemsPerRow={2}>
+        <Card>
+          <h2>Coming events</h2>
           {events.map(event => {
             if (event.date >= Date.now()) {
-              return (
-                <Grid.Column>
-                  <EventCard key={event.id} event={event} />
-                </Grid.Column>
-              );
+              return <EventCard key={event.id} event={event} />;
             }
           })}
-        </Grid.Row>
-        <h2>Past events </h2>
-        <Grid.Row>
+        </Card>
+
+        <Card>
+          <h2>Past events </h2>
           {events.map(event => {
             if (event.date < Date.now()) {
-              return (
-                <Grid.Column>
-                  <EventCard key={event.id} event={event} />
-                </Grid.Column>
-              );
+              return <EventCard key={event.id} event={event} />;
             }
           })}
-        </Grid.Row>
-      </Grid>
+        </Card>
+
+        <Card>
+          <h2>All events </h2>s
+          {events.map(event => {
+            return <EventCard key={event.id} event={event} />;
+          })}
+        </Card>
+      </Card.Group>
     </>
   );
 };

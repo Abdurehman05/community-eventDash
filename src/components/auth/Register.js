@@ -52,7 +52,7 @@ export const Register = props => {
   };
 
   return (
-    <Card>
+    <Card centered>
       <Card.Content>
         <main style={{ textAlign: "left" }}>
           <dialog className="dialog dialog--password" ref={conflictDialog}>

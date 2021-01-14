@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import "./Login.css";
-import { Form, Card } from "semantic-ui-react";
+import { Form, Card, Image } from "semantic-ui-react";
 
 export const Login = props => {
   const email = useRef();
@@ -33,7 +33,7 @@ export const Login = props => {
   };
 
   return (
-    <Card>
+    <Card centered>
       <Card.Content>
         <main className="container--login">
           <dialog className="dialog dialog--auth" ref={existDialog}>

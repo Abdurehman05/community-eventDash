@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Card } from "semantic-ui-react";
 
 export const MemberCard = ({ member }) => (
-  <section className="member">
-    <h3 className="member__name">
+  <Card>
+    <Card.Header>
       <Link to={`members/detail/${member.id}`}>{member.username}</Link>
-    </h3>
-  </section>
+    </Card.Header>
+  </Card>
 );

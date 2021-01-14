@@ -3,6 +3,7 @@ import { EventContext } from "./EventProvider";
 import { useHistory, useParams } from "react-router-dom";
 import "./Event.css";
 import { Card } from "semantic-ui-react";
+import moment from "moment";
 
 export const EventDetail = () => {
   const { getEventById, deleteEvent } = useContext(EventContext);
@@ -48,7 +49,7 @@ export const EventDetail = () => {
   };
 
   return (
-    <Card>
+    <Card centered>
       <Card.Content>
         <section className="event">
           <Card.Header>
@@ -56,10 +57,8 @@ export const EventDetail = () => {
           </Card.Header>
           <Card.Content>
             <div className="event-userId">{activeUser}</div>
-            <div className="event-date">
-              {new Date(event.date).toLocaleDateString("en-US")}
-            </div>
-            <div className="event-time">{event.time}</div>
+            <div className="event-date">Date: {event.date}</div>
+            <div className="event-time">Time:{event.time} </div>
             <div className="event-location">Location: {location.name}</div>
             <br></br>
             <section className="buttons">{showButton()}</section>

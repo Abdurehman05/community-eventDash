@@ -28,7 +28,7 @@ li a:hover {
 .navbar {
     display: flex;
     flex: 100%;
-    background-color: rgb(6, 13, 216);
+    background-color: #3774c3;
 }
 
 .navbar__link {

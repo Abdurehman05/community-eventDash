@@ -14,7 +14,7 @@ export const MemberList = () => {
   return (
     <>
       <div className="members">
-        <div className="memberTitleButton">
+        {/* <div className="memberTitleButton">
           <h2>List of Ethio-Nashville Community Members</h2>
           <button
             onClick={() => {
@@ -23,7 +23,7 @@ export const MemberList = () => {
           >
             Add New Member
           </button>
-        </div>
+        </div> */}
 
         {members.map(member => {
           return <MemberCard key={member.id} member={member} />;

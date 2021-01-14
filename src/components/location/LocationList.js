@@ -3,6 +3,7 @@ import { LocationContext } from "./LocationProvider";
 import { LocationCard } from "./LocationCard";
 import "./Location.css";
 import { useHistory } from "react-router-dom";
+import { Grid, Button, Card } from "semantic-ui-react";
 
 export const LocationList = () => {
   const { locations, getLocations } = useContext(LocationContext);
@@ -13,21 +14,22 @@ export const LocationList = () => {
   const history = useHistory();
   return (
     <>
-      <div className="locations">
-        <div className="locationTitleButton">
+      <Button
+        primary
+        onClick={() => {
+          history.push("/locations/create");
+        }}
+      >
+        Add New Location
+      </Button>
+      <Card.Group centered itemsPerRow={2}>
+        <Card>
           <h2>Locations</h2>
-          <button
-            onClick={() => {
-              history.push("/locations/create");
-            }}
-          >
-            Add New Location
-          </button>
-        </div>
-        {locations.map(location => {
-          return <LocationCard key={location.id} location={location} />;
-        })}
-      </div>
+          {locations.map(location => {
+            return <LocationCard key={location.id} location={location} />;
+          })}
+        </Card>
+      </Card.Group>
     </>
   );
 };

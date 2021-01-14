@@ -4,7 +4,8 @@ import { LocationContext } from "../location/LocationProvider";
 import { MemberContext } from "../member/MemberProvider";
 import "./Event.css";
 import { useHistory, useParams } from "react-router-dom";
-import { Form, Card } from "semantic-ui-react";
+import { Form, Card, Button } from "semantic-ui-react";
+import moment from "moment";
 
 export const EventForm = () => {
   const { addEvent, getEventById, editEvent } = useContext(EventContext);
@@ -48,7 +49,7 @@ export const EventForm = () => {
         editEvent({
           id: event.id,
           name: event.name,
-          date: Date.parse(event.date),
+          date: moment(event.date).format("MMMM Do YYYY"),
           time: event.time,
           locationId: parseInt(event.locationId),
           userId: parseInt(event.userId)
@@ -57,7 +58,7 @@ export const EventForm = () => {
       } else {
         addEvent({
           name: event.name,
-          date: Date.parse(event.date),
+          date: moment(event.date).format("MMMM Do YYYY"),
           time: event.time,
           locationId: parseInt(event.locationId),
           userId: parseInt(event.userId)
@@ -68,7 +69,7 @@ export const EventForm = () => {
   };
 
   return (
-    <Card>
+    <Card centered>
       <Form className="eventForm">
         <h2 className="eventForm__title">Add New Event</h2>
         <fieldset>
@@ -160,7 +161,9 @@ export const EventForm = () => {
           </div>
         </fieldset>
 
-        <button
+        <Button
+          primary
+          circular
           className="btn btn-primary"
           disabled={isLoading}
           onClick={e => {
@@ -169,7 +172,7 @@ export const EventForm = () => {
           }}
         >
           {eventId ? <>Save Event</> : <>Add Event</>}
-        </button>
+        </Button>
       </Form>
     </Card>
   );
