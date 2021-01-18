@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { MemberContext } from "./MemberProvider";
 import { MemberCard } from "./MemberCard";
 import { useHistory } from "react-router-dom";
+import { Container, Grid, Button } from "semantic-ui-react";
 
 export const MemberList = () => {
   const { members, getMembers } = useContext(MemberContext);
@@ -13,22 +14,29 @@ export const MemberList = () => {
   const history = useHistory();
   return (
     <>
-      <div className="members">
-        <div className="memberTitleButton">
-          <h2>List of Ethio-Nashville Community Members</h2>
-          <button
-            onClick={() => {
-              history.push("/members/create");
-            }}
-          >
-            Add New Member
-          </button>
-        </div>
+      <Container>
+        <h2>List of Ethio-Nashville Community Members</h2>
+        <Button
+          primary
+          onClick={() => {
+            history.push("/members/create");
+          }}
+        >
+          Add New Member
+        </Button>
 
-        {members.map(member => {
-          return <MemberCard key={member.id} member={member} />;
-        })}
-      </div>
+        <Grid container columns={3}>
+          <Grid.Row>
+            {members.map((member) => {
+              return (
+                <Grid.Column>
+                  <MemberCard key={member.id} member={member} />
+                </Grid.Column>
+              );
+            })}
+          </Grid.Row>
+        </Grid>
+      </Container>
     </>
   );
 };

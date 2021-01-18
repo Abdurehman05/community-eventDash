@@ -13,12 +13,12 @@ import { MemberProvider } from "./member/MemberProvider";
 import { MemberList } from "./member/MemberList";
 import { MemberForm } from "./member/MemberForm";
 import { MemberDetail } from "./member/MemberDetail";
-export const ApplicationViews = props => {
+export const ApplicationViews = (props) => {
   return (
     <>
       {/* Home */}
       <Route exact path="/">
-        <Home />
+        <Home greeting="What's up Fellas" />
       </Route>
 
       {/* Events */}
